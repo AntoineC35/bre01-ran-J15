@@ -11,7 +11,7 @@
     <body>
         <header>
         </header>
-        <main>
+        <main class="grid">
             <div id="row-0">
                 <div class="col-0"></div>
                 <div class="col-1"></div>
@@ -474,10 +474,22 @@
                 <div class="col-18"></div>
                 <div class="col-19"></div>
             </div>
-            <div id="capture" style="padding: 10px; background: #f5da55">
-                <h4 style="color: #000; ">Hello world!</h4>
             </div>
-        </main>
+        </main> 
+       <div>
+           <a id="downloadBtn">Telecharger votre Chef d'Oeuvre !</a>
+       </div> 
+        <script src="assets/js/html2canvas.js"></script>
+        <script>
+            document.getElementById('downloadBtn').addEventListener('click', function() {
+             const elm = document.querySelector(".grid");
+             html2canvas(elm).then(function(canvas) {
+            const imgData = canvas.toDataURL('image/png');
+            const newWindow = window.open();
+            newWindow.document.write('<img src="' + imgData + '" />');
+                });
+            });
+        </script>
         <script type="module" src="assets/js/main.js"></script>
     </body>
 </html>
