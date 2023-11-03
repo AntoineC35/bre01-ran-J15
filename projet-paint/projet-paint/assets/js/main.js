@@ -1,5 +1,3 @@
-import html2canvas from 'html2canvas';
-
 function selectColor(event)
 {
     let colorBox = event.target;
@@ -37,6 +35,21 @@ function loadPalette(palette)
     }
 }
 
+function chooseGridTemplate(numberRow, numberCol) {
+    let header = document.querySelector("header");
+    let grid = document.querySelector("main")
+    for (let i=0; i<numberRow; i++){
+        let row = document.createElement("div")
+        row.setAttribute("class", `row-${i}`)
+        for (let y=0; y<numberCol; y++) {
+            let col = document.createElement("div")
+            col.setAttribute("class", `col-${y}`);
+            row.appendChild(col)
+        }
+        grid.appendChild(row)
+    }
+    }
+
 
 window.addEventListener("DOMContentLoaded", function(){
     loadPalette(["#22f6f3", "#3daf7e", "#ffffff", "#ec8236", "#a9a7ee", "#ecc606", "#f783f2", "#e89e80", "#33FF80"]);
@@ -63,9 +76,4 @@ window.addEventListener("DOMContentLoaded", function(){
         }
     });
 });
-
-    html2canvas(document.querySelector("#capture")).then(canvas => {
-        document.body.appendChild(canvas)
-    });
-
 });
