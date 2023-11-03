@@ -62,20 +62,7 @@ window.addEventListener("DOMContentLoaded", function(){
             console.log(getSelectedColor());
     });
 });
-
-    let selectedCaseToColor = document.querySelectorAll("main > div > div");
-        selectedCaseToColor.forEach(function(divToColor) {
-    divToColor.addEventListener("click", function(event) {
-        let colorToApply = getSelectedColor();
-        let currentColor = divToColor.style.backgroundColor;
-
-        if (!currentColor || currentColor === "transparent") {
-            divToColor.style.backgroundColor = colorToApply;
-        } else {
-            divToColor.style.backgroundColor = "transparent";
-        }
-    });
-});
+        
     let submitTableau = document.getElementById("submitTableau")
     let numberOfCol = document.getElementById("numberOfCol");
     let numberOfRow = document.getElementById("numberOfRow");
@@ -86,6 +73,7 @@ window.addEventListener("DOMContentLoaded", function(){
   oldDiv[i].remove();
 }
      chooseGridTemplate(numberOfRow.value, numberOfCol.value);
+     let selectedCaseToColor = document.querySelectorAll("main > div > div");
      selectedCaseToColor.forEach(function(divToColor) {
     divToColor.addEventListener("click", function(event) {
         let colorToApply = getSelectedColor();
