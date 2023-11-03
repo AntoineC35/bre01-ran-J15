@@ -76,4 +76,28 @@ window.addEventListener("DOMContentLoaded", function(){
         }
     });
 });
+    let submitTableau = document.getElementById("submitTableau")
+    let numberOfCol = document.getElementById("numberOfCol");
+    let numberOfRow = document.getElementById("numberOfRow");
+    submitTableau.addEventListener("click", function(event) {
+    event.preventDefault();
+    let oldDiv = document.querySelectorAll("main > div");
+    for (let i = oldDiv.length - 1; i >= 0; i--) {
+  oldDiv[i].remove();
+}
+     chooseGridTemplate(numberOfRow.value, numberOfCol.value);
+     selectedCaseToColor.forEach(function(divToColor) {
+    divToColor.addEventListener("click", function(event) {
+        let colorToApply = getSelectedColor();
+        let currentColor = divToColor.style.backgroundColor;
+
+        if (!currentColor || currentColor === "transparent") {
+            divToColor.style.backgroundColor = colorToApply;
+        } else {
+            divToColor.style.backgroundColor = "transparent";
+        }
+    });
+});
+    })
+    
 });
